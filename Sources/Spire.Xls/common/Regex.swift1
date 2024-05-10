@@ -1,0 +1,879 @@
+import spirexls
+
+/*
+
+*/
+public class Regex: SpireObject{
+    public override class var typeName: String { get {
+        "Regex"
+    }}
+    public override class var fullTypeName: String { get {
+        "spirexls.Regex"
+    }}
+
+    required init(_ handle: UnsafeMutableRawPointer) {
+        super.init(handle)
+    }
+
+    /*
+
+    */
+
+    public static func get_CacheSize() throws -> Int32{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_get_CacheSize( &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public static func set_CacheSize(_ value:Int32) throws {
+        var __exceptionC: spirexls_Exception_t?
+        Regex_set_CacheSize( value, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+    }
+//    
+//    /*
+//
+//    */
+//
+//    public static func CompileToAssembly(_ regexinfos:'RegexCompilationInfo[]', _ assemblyname:'AssemblyName') throws {
+//        var __exceptionC: spirexls_Exception_t?
+//        let cPointerregexinfos = createCObjectArrayPointer(from:regexinfos)
+//       let countregexinfos = Int32(regexinfos.count)
+//
+//        let intPtrassemblyname = assemblyname.getHandle()
+//
+//        Regex_CompileToAssembly(cPointerregexinfos,intPtrassemblyname, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func CompileToAssembly(_ regexinfos:'RegexCompilationInfo[]', _ assemblyname:'AssemblyName', _ attributes:'CustomAttributeBuilder[]') throws {
+//        var __exceptionC: spirexls_Exception_t?
+//        let cPointerregexinfos = createCObjectArrayPointer(from:regexinfos)
+//       let countregexinfos = Int32(regexinfos.count)
+//
+//        let intPtrassemblyname = assemblyname.getHandle()
+//        let cPointerattributes = createCObjectArrayPointer(from:attributes)
+//       let countattributes = Int32(attributes.count)
+//
+//
+//        Regex_CompileToAssemblyRAA(cPointerregexinfos,intPtrassemblyname,cPointerattributes, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func CompileToAssembly(_ regexinfos:'RegexCompilationInfo[]', _ assemblyname:'AssemblyName', _ attributes:'CustomAttributeBuilder[]', _ resourceFile:String) throws {
+//        var __exceptionC: spirexls_Exception_t?
+//        let cPointerregexinfos = createCObjectArrayPointer(from:regexinfos)
+//       let countregexinfos = Int32(regexinfos.count)
+//
+//        let intPtrassemblyname = assemblyname.getHandle()
+//        let cPointerattributes = createCObjectArrayPointer(from:attributes)
+//       let countattributes = Int32(attributes.count)
+//
+//        let ptrresourceFile = StringToUnsafePointer(resourceFile)
+//
+//        Regex_CompileToAssemblyRAAR(cPointerregexinfos,intPtrassemblyname,cPointerattributes,ptrresourceFile, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//    }
+
+    
+    /*
+
+    */
+
+    public static func Escape(_ str:String) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrstr = StringToUnsafePointer(str)
+
+        let __returnValueC = Regex_Escape(ptrstr, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public static func Unescape(_ str:String) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrstr = StringToUnsafePointer(str)
+
+        let __returnValueC = Regex_Unescape(ptrstr, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func get_Options() throws ->RegexOptions{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_get_Options(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return RegexOptions(rawValue:__returnValueC.rawValue)!
+    }
+    
+    /*
+
+    */
+
+    public func get_RightToLeft() throws -> Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_get_RightToLeft(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public func ToString() throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_ToString(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func GetGroupNames() throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_GetGroupNames(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func GetGroupNumbers() throws -> [Int32]{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = Regex_GetGroupNumbers(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getInt32Array(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func GroupNameFromNumber(_ i:Int32) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        
+        let __returnValueC = Regex_GroupNameFromNumber(self.getHandle() ,i, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func GroupNumberFromName(_ name:String) throws ->Int32{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrname = StringToUnsafePointer(name)
+
+        let __returnValueC = Regex_GroupNumberFromName(self.getHandle() ,ptrname, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public static func IsMatch(_ input:String, _ pattern:String) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+
+        let __returnValueC = Regex_IsMatch(ptrinput,ptrpattern, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public static func IsMatch(_ input:String, _ pattern:String, _ options:RegexOptions) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+
+        let __returnValueC = Regex_IsMatchIPO(ptrinput,ptrpattern,enumoptions, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public static func IsMatch(_ input:String, _ pattern:String, _ options:RegexOptions, _ matchTimeout:TimeSpan) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+        let intPtrmatchTimeout = matchTimeout.getHandle()
+
+        let __returnValueC = Regex_IsMatchIPOM(ptrinput,ptrpattern,enumoptions,intPtrmatchTimeout, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public func IsMatch(_ input:String) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+
+        let __returnValueC = Regex_IsMatchI(self.getHandle() ,ptrinput, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+    
+    /*
+
+    */
+
+    public func IsMatch(_ input:String, _ startat:Int32) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+
+        let __returnValueC = Regex_IsMatchIS(self.getHandle() ,ptrinput,startat, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+//    
+//    /*
+//
+//    */
+//
+//    public static func Match(_ input:String, _ pattern:String) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//
+//        let ptr = Regex_Match(ptrinput,ptrpattern, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Match(_ input:String, _ pattern:String, _ options:RegexOptions) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//
+//        let ptr = Regex_MatchIPO(ptrinput,ptrpattern,enumoptions, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Match(_ input:String, _ pattern:String, _ options:RegexOptions, _ matchTimeout:TimeSpan) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//        let intPtrmatchTimeout = matchTimeout.getHandle()
+//
+//        let ptr = Regex_MatchIPOM(ptrinput,ptrpattern,enumoptions,intPtrmatchTimeout, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Match(_ input:String) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//
+//        let ptr = Regex_MatchI(self.getHandle() ,ptrinput, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Match(_ input:String, _ startat:Int32) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//
+//        let ptr = Regex_MatchIS(self.getHandle() ,ptrinput,startat, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Match(_ input:String, _ beginning:Int32, _ length:Int32) throws ->Match{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//
+//        let ptr = Regex_MatchIBL(self.getHandle() ,ptrinput,beginning,length, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return Match(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Matches(_ input:String, _ pattern:String) throws ->MatchCollection{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//
+//        let ptr = Regex_Matches(ptrinput,ptrpattern, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return MatchCollection(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Matches(_ input:String, _ pattern:String, _ options:RegexOptions) throws ->MatchCollection{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//
+//        let ptr = Regex_MatchesIPO(ptrinput,ptrpattern,enumoptions, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return MatchCollection(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Matches(_ input:String, _ pattern:String, _ options:RegexOptions, _ matchTimeout:TimeSpan) throws ->MatchCollection{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//        let intPtrmatchTimeout = matchTimeout.getHandle()
+//
+//        let ptr = Regex_MatchesIPOM(ptrinput,ptrpattern,enumoptions,intPtrmatchTimeout, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return MatchCollection(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Matches(_ input:String) throws ->MatchCollection{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//
+//        let ptr = Regex_MatchesI(self.getHandle() ,ptrinput, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return MatchCollection(ptr!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Matches(_ input:String, _ startat:Int32) throws ->MatchCollection{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//
+//        let ptr = Regex_MatchesIS(self.getHandle() ,ptrinput,startat, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return MatchCollection(ptr!)
+//    }
+
+    
+    /*
+
+    */
+
+    public static func Replace(_ input:String, _ pattern:String, _ replacement:String) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+
+        let __returnValueC = Regex_Replace(ptrinput,ptrpattern,ptrreplacement, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public static func Replace(_ input:String, _ pattern:String, _ replacement:String, _ options:RegexOptions) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+
+        let __returnValueC = Regex_ReplaceIPRO(ptrinput,ptrpattern,ptrreplacement,enumoptions, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public static func Replace(_ input:String, _ pattern:String, _ replacement:String, _ options:RegexOptions, _ matchTimeout:TimeSpan) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+        let intPtrmatchTimeout = matchTimeout.getHandle()
+
+        let __returnValueC = Regex_ReplaceIPROM(ptrinput,ptrpattern,ptrreplacement,enumoptions,intPtrmatchTimeout, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func Replace(_ input:String, _ replacement:String) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+
+        let __returnValueC = Regex_ReplaceIR(self.getHandle() ,ptrinput,ptrreplacement, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func Replace(_ input:String, _ replacement:String, _ count:Int32) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+
+        let __returnValueC = Regex_ReplaceIRC(self.getHandle() ,ptrinput,ptrreplacement,count, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func Replace(_ input:String, _ replacement:String, _ count:Int32, _ startat:Int32) throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrreplacement = StringToUnsafePointer(replacement)
+
+        let __returnValueC = Regex_ReplaceIRCS(self.getHandle() ,ptrinput,ptrreplacement,count,startat, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+//    
+//    /*
+//
+//    */
+//
+//    public static func Replace(_ input:String, _ pattern:String, _ evaluator:'MatchEvaluator') throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let intPtrevaluator = evaluator.getHandle()
+//
+//        let __returnValueC = Regex_ReplaceIPE(ptrinput,ptrpattern,intPtrevaluator, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Replace(_ input:String, _ pattern:String, _ evaluator:'MatchEvaluator', _ options:RegexOptions) throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let intPtrevaluator = evaluator.getHandle()
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//
+//        let __returnValueC = Regex_ReplaceIPEO(ptrinput,ptrpattern,intPtrevaluator,enumoptions, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public static func Replace(_ input:String, _ pattern:String, _ evaluator:'MatchEvaluator', _ options:RegexOptions, _ matchTimeout:TimeSpan) throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let ptrpattern = StringToUnsafePointer(pattern)
+//        let intPtrevaluator = evaluator.getHandle()
+//        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+//        let intPtrmatchTimeout = matchTimeout.getHandle()
+//
+//        let __returnValueC = Regex_ReplaceIPEOM(ptrinput,ptrpattern,intPtrevaluator,enumoptions,intPtrmatchTimeout, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Replace(_ input:String, _ evaluator:'MatchEvaluator') throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let intPtrevaluator = evaluator.getHandle()
+//
+//        let __returnValueC = Regex_ReplaceIE(self.getHandle() ,ptrinput,intPtrevaluator, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Replace(_ input:String, _ evaluator:'MatchEvaluator', _ count:Int32) throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let intPtrevaluator = evaluator.getHandle()
+//
+//        let __returnValueC = Regex_ReplaceIEC(self.getHandle() ,ptrinput,intPtrevaluator,count, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+//    
+//    /*
+//
+//    */
+//
+//    public func Replace(_ input:String, _ evaluator:'MatchEvaluator', _ count:Int32, _ startat:Int32) throws -> String{
+//        var __exceptionC: spirexls_Exception_t?
+//        let ptrinput = StringToUnsafePointer(input)
+//        let intPtrevaluator = evaluator.getHandle()
+//
+//        let __returnValueC = Regex_ReplaceIECS(self.getHandle() ,ptrinput,intPtrevaluator,count,startat, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return UnsafePointerToString(__returnValueC!)
+//    }
+
+    
+    /*
+
+    */
+
+    public static func Split(_ input:String, _ pattern:String) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+
+        let __returnValueC = Regex_Split(ptrinput,ptrpattern, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public static func Split(_ input:String, _ pattern:String, _ options:RegexOptions) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+
+        let __returnValueC = Regex_SplitIPO(ptrinput,ptrpattern,enumoptions, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public static func Split(_ input:String, _ pattern:String, _ options:RegexOptions, _ matchTimeout:TimeSpan) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+        let ptrpattern = StringToUnsafePointer(pattern)
+        let enumoptions = spirexls_RegexOptions_t(rawValue:options.rawValue)!
+        let intPtrmatchTimeout = matchTimeout.getHandle()
+
+        let __returnValueC = Regex_SplitIPOM(ptrinput,ptrpattern,enumoptions,intPtrmatchTimeout, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func Split(_ input:String) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+
+        let __returnValueC = Regex_SplitI(self.getHandle() ,ptrinput, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func Split(_ input:String, _ count:Int32) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+
+        let __returnValueC = Regex_SplitIC(self.getHandle() ,ptrinput,count, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func Split(_ input:String, _ count:Int32, _ startat:Int32) throws -> [String]{
+        var __exceptionC: spirexls_Exception_t?
+        let ptrinput = StringToUnsafePointer(input)
+
+        let __returnValueC = Regex_SplitICS(self.getHandle() ,ptrinput,count,startat, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return getStringArray(from:__returnValueC)
+    }
+    
+    /*
+
+    */
+
+    public func get_MatchTimeout() throws ->TimeSpan{
+        var __exceptionC: spirexls_Exception_t?
+        let ptr = Regex_get_MatchTimeout(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return TimeSpan(ptr!)
+    }
+    
+    /*
+
+    */
+
+    public static func InfiniteMatchTimeout() throws ->TimeSpan{
+        var __exceptionC: spirexls_Exception_t?
+        let ptr = Regex_InfiniteMatchTimeout( &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return TimeSpan(ptr!)
+    }
+}
+

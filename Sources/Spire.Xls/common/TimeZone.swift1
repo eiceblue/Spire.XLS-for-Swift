@@ -1,0 +1,158 @@
+import spirexls
+
+/*
+
+*/
+public class TimeZone: SpireObject{
+    public override class var typeName: String { get {
+        "TimeZone"
+    }}
+    public override class var fullTypeName: String { get {
+        "spirexls.TimeZone"
+    }}
+
+    required init(_ handle: UnsafeMutableRawPointer) {
+        super.init(handle)
+    }
+
+    /*
+
+    */
+
+    public static func get_CurrentTimeZone() throws ->TimeZone{
+        var __exceptionC: spirexls_Exception_t?
+        let ptr = TimeZone_get_CurrentTimeZone( &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return TimeZone(ptr!)
+    }
+    
+    /*
+
+    */
+
+    public func get_StandardName() throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = TimeZone_get_StandardName(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func get_DaylightName() throws -> String{
+        var __exceptionC: spirexls_Exception_t?
+        let __returnValueC = TimeZone_get_DaylightName(self.getHandle(), &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return UnsafePointerToString(__returnValueC!)
+    }
+    
+    /*
+
+    */
+
+    public func GetUtcOffset(_ time:DateTime) throws ->TimeSpan{
+        var __exceptionC: spirexls_Exception_t?
+        let intPtrtime = time.getHandle()
+
+        let ptr = TimeZone_GetUtcOffset(self.getHandle() ,intPtrtime, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return TimeSpan(ptr!)
+    }
+    
+    /*
+
+    */
+
+    public func ToUniversalTime(_ time:DateTime) throws ->DateTime{
+        var __exceptionC: spirexls_Exception_t?
+        let intPtrtime = time.getHandle()
+
+        let ptr = TimeZone_ToUniversalTime(self.getHandle() ,intPtrtime, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return DateTime(ptr!)
+    }
+    
+    /*
+
+    */
+
+    public func ToLocalTime(_ time:DateTime) throws ->DateTime{
+        var __exceptionC: spirexls_Exception_t?
+        let intPtrtime = time.getHandle()
+
+        let ptr = TimeZone_ToLocalTime(self.getHandle() ,intPtrtime, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return DateTime(ptr!)
+    }
+//    
+//    /*
+//
+//    */
+//
+//    public func GetDaylightChanges(_ year:Int32) throws ->DaylightTime{
+//        var __exceptionC: spirexls_Exception_t?
+//        
+//        let ptr = TimeZone_GetDaylightChanges(self.getHandle() ,year, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return DaylightTime(ptr!)
+//    }
+
+    
+    /*
+
+    */
+
+    public func IsDaylightSavingTime(_ time:DateTime) throws ->Bool{
+        var __exceptionC: spirexls_Exception_t?
+        let intPtrtime = time.getHandle()
+
+        let __returnValueC = TimeZone_IsDaylightSavingTime(self.getHandle() ,intPtrtime, &__exceptionC)
+        if let exceptionC = __exceptionC {
+            let exception = SpireException(exceptionC)
+            throw exception
+        }
+        return __returnValueC
+    }
+//    
+//    /*
+//
+//    */
+//
+//    public static func IsDaylightSavingTime(_ time:DateTime, _ daylightTimes:'DaylightTime') throws ->Bool{
+//        var __exceptionC: spirexls_Exception_t?
+//        let intPtrtime = time.getHandle()
+//        let intPtrdaylightTimes = daylightTimes.getHandle()
+//
+//        let __returnValueC = TimeZone_IsDaylightSavingTimeTD(intPtrtime,intPtrdaylightTimes, &__exceptionC)
+//        if let __exceptionC {
+//            let __exception = SpireException(__exceptionC)
+//            throw __exception
+//        }
+//        return __returnValueC
+//    }
+
+}
+

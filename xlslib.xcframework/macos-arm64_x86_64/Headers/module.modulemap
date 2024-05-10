@@ -1,0 +1,5 @@
+module spirexls {
+    header "spirexls1.h"
+    header "spirexls2.h"
+    export *
+}
